@@ -1,0 +1,50 @@
+{{ include( 'header.twig' ) }}
+
+  <main>
+    <div>{{ content }}</div>
+    <h1 class="content-subhead">Recent posts</h1>
+    <div class="posts">
+      {% set posts_per_page = 10 %}
+      {% set cnt = 0 %}
+      {% set p = ( TwigGetUrl and TwigGetUrl['p'] ) ? TwigGetUrl['p'] : 0 %}
+      {% set first = p * posts_per_page %}
+      {% set last = first + posts_per_page %}
+      {% for page in pages | sort_by( 'time' ) | reverse %}
+        {% if page.id starts with "blog/" %}
+          {% set cnt = cnt + 1 %}
+          {% if cnt > first and cnt <= last %}
+            <div class="post-date">
+              <div class="month">{{ page.date | date( 'M' ) }}</div>
+              <div class="day">{{ page.date | date( 'j' ) }}</div>
+              <div class="year">{{ page.date | date( 'Y' ) }}</div>
+            </div>
+            <section class="post">
+              <header class="post-header">
+                <h2 class="post-title"><a href="{{ page.url }}">{{ page.title }}</a></h2>
+                <p class="post-meta">
+                  Author: <a href="#" class="post-author">{{ page.author }}</a> &ndash;
+                  {% set tags = page.meta['tags'] | split( ',' ) %}
+                  {% for tag in tags %}
+                    {% if not tag is empty %}
+                      <a href="#{{ tag }}" class="post-tag">{{ tag }}</a>
+                    {% endif %}
+                  {% endfor %}
+                </p>
+              </header>
+              <div class="post-description">
+                <p>{{ page.excerpt }}</p>
+                <!-- { % if page.meta['image'] % }
+                  <img class="post-image" src="{{ base_url }}/assets/images/{{ page.meta['image'] }}"/>
+                { % endif % } -->
+              </div>
+            </section>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+      {% if cnt > last %}
+        <a href="{{ 'index' | link }}?p={{ p + 1 }}">more posts</a>
+      {% endif %}
+    </div>
+  </main>
+
+{{ include( 'footer.twig' ) }}

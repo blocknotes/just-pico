@@ -1,0 +1,23 @@
+{{ include( 'header.twig' ) }}
+
+  <main>
+    <div class="header">
+      <h1>{{ meta.title }}</h1>
+      {% if meta.subtitle %}
+        <h2>{{ meta.subtitle }}</h2>
+      {% endif %}
+    </div>
+    <div>
+      <div>{{ content }}</div>
+      <div class="grid">
+        {% set images = meta.images | split( ',' ) %}
+        {% for image in images %}
+          <div class="grid-item">
+            <img src="{{ base_url }}/assets/images/{{ image | trim | replace( { '.gif': '_.gif', '.jpg': '_.jpg', '.png': '_.png' } ) }}" class="grid-item-image"/>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </main>
+
+{{ include( 'footer.twig' ) }}

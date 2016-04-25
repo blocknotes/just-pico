@@ -1,0 +1,489 @@
+/*=================================
+ * Just Pico Theme
+ * By: Mattia Roccoberton
+ * http://blocknot.es
+ *=================================*/
+
+* {
+  font-family: Roboto, sans-serif;
+}
+
+body {
+  background: url('../img/bg.png');
+  color: #777;
+  overflow-y: scroll;
+}
+
+a {
+  color: #48f;
+  text-decoration: none;
+}
+
+main {
+  margin: 0;
+}
+
+.pure-img-responsive {
+  max-width: 100%;
+  height: auto;
+}
+
+/*
+Add transition to containers so they can push in and out.
+*/
+#layout,
+#menu,
+.menu-link {
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -ms-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+
+/*
+This is the parent `<div>` that contains the menu and the content area.
+*/
+#layout {
+  position: relative;
+  padding-left: 0;
+}
+
+#layout.active #menu {
+  left: 250px;
+  width: 250px;
+}
+
+#layout.active .menu-link {
+  left: 250px;
+}
+
+.header {
+  margin: 0;
+  color: #333;
+  text-align: center;
+  padding: 2.5em 0 !important;
+  border-bottom: 1px solid #eee;
+}
+.header h1 {
+  margin: 0.2em 0;
+  font-size: 3em;
+  font-weight: 300;
+}
+.header h2 {
+  font-weight: 300;
+  color: #ccc;
+  padding: 0;
+  margin-top: 0;
+}
+
+.content-subhead {
+  margin: 50px 0 20px 0;
+  font-weight: 300;
+  color: #888;
+}
+
+/*
+The `#menu` `<div>` is the parent `<div>` that contains the `.pure-menu` that
+appears on the left side of the page.
+*/
+
+#menu {
+  margin-left: -250px; /* "#menu" width */
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1000; /* so the menu or its navicon stays above all content */
+  background: #333;
+  overflow-y: auto;
+  text-align: center;
+  -webkit-overflow-scrolling: touch;
+}
+/*
+All anchors inside the menu should be styled like this.
+*/
+#menu a {
+  color: #999;
+  border: none;
+  padding: 1em 0.5em;
+  text-shadow: 1px 1px #222;
+}
+#menu a:hover {
+  text-decoration: none;
+}
+
+/*
+Remove all background/borders, since we are applying them to #menu.
+*/
+#menu .pure-menu,
+#menu .pure-menu ul {
+  border: none;
+  background: transparent;
+}
+
+/*
+Add that light border to separate items into groups.
+*/
+#menu .pure-menu ul,
+#menu .pure-menu .menu-item-divided {
+  border-top: 1px solid #333;
+}
+/*
+Change color of the anchor links on hover/focus.
+*/
+#menu .pure-menu li a:hover,
+#menu .pure-menu li a:focus {
+  background: transparent;
+  color: #fc0;
+}
+
+/*
+This styles the selected menu item `<li>`.
+*/
+#menu .pure-menu-selected,
+#menu .pure-menu-heading {
+  background: #1f8dd6;
+}
+
+/*
+This styles a link within a selected menu item `<li>`.
+*/
+#menu .pure-menu-selected a {
+  color: #fff;
+}
+
+/*
+This styles the menu heading.
+*/
+#menu .pure-menu-heading {
+  font-size: 110%;
+  color: #fff;
+  margin: 0;
+}
+
+#menuLink {
+  background: #333;
+}
+
+#overlay {
+  background: rgba( 0, 0, 0, 0.8 );
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+  z-index: 999999;
+}
+#overlay img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+main .content {
+  background: #f8f8f8;
+  border: 1px solid #ccc;
+  padding: 1em 2em;
+  margin-bottom: 40px;
+}
+/*.blog .content > div {
+  border-bottom: 1px dotted #aaa;
+  padding-bottom: 15px;
+}*/
+
+/* -- Dynamic Button For Responsive Menu -------------------------------------*/
+
+/*
+The button to open/close the Menu is custom-made and not part of Pure. Here's
+how it works:
+*/
+
+/*
+`.menu-link` represents the responsive menu toggle that shows/hides on
+small screens.
+*/
+.menu-link {
+  position: fixed;
+  display: block; /* show this only on small screens */
+  top: 0;
+  left: 0; /* "#menu width" */
+  background: #000;
+  background: rgba(0,0,0,0.7);
+  font-size: 10px; /* change this value to increase/decrease button size */
+  z-index: 10;
+  width: 2em;
+  height: auto;
+  padding: 2.1em 1.6em;
+}
+
+.menu-link:hover,
+.menu-link:focus {
+  background: #000;
+}
+
+.menu-link span {
+  position: relative;
+  display: block;
+}
+
+.menu-link span,
+.menu-link span:before,
+.menu-link span:after {
+  background-color: #fff;
+  width: 100%;
+  height: 0.2em;
+}
+
+.menu-link span:before,
+.menu-link span:after {
+  position: absolute;
+  margin-top: -0.6em;
+  content: " ";
+}
+
+.menu-link span:after {
+  margin-top: 0.6em;
+}
+
+/*
+ * Blog template
+ */
+.content-subhead {
+  text-transform: uppercase;
+  color: #aaa;
+  border-bottom: 1px dotted #aaa;
+  margin-bottom: 4em;
+  padding: 0.4em 0;
+  font-size: 80%;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+}
+.post {
+  background: #f4f4f4;
+  border: 2px solid #999;
+  padding: 0 1.5em;
+  position: relative;
+  margin: 0 0 2em 76px;
+}
+.post-avatar {
+  border-radius: 50px;
+  float: right;
+  margin-left: 1em;
+}
+.post-category {
+  margin: 0 0.1em;
+  padding: 0.3em 1em;
+  color: #fff;
+  background: #999;
+  font-size: 80%;
+}
+.post-date {
+  background: #f4f4f4;
+  border: 2px solid #999;
+  height: 76px;
+  position: absolute;
+  width: 76px;
+}
+.post-date .month {
+  background: #fe1;
+  border-bottom: 2px solid #999;
+  color: #444;
+  font-size: 12px;
+  line-height: 22px;
+  text-align: center;
+}
+.post-date .day {
+  color: #444;
+  font-size: 22px;
+  font-weight: bold;
+  padding-top: 4px;
+  text-align: center;
+}
+.post-date .year {
+  bottom: 0;
+  font-size: 12px;
+  line-height: 22px;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+.post-description {
+  color: #666;
+  line-height: 1.8em;
+}
+.post-description > p {
+  z-index: 2;
+}
+.post-image {
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}
+.post-meta {
+  color: #999;
+  font-size: 90%;
+  margin: 0;
+}
+.post-tag {
+  background: #cde;
+  font-size: 0.9em;
+  padding: 2px 6px;
+}
+.post-title {
+  font-size: 2em;
+  font-weight: normal;
+  margin-bottom: 0.5em;
+}
+.post-title a {
+  color: #222;
+}
+
+/*
+ * Blog-item template
+ */
+.blog-item .meta-image {
+  text-align: center;
+}
+.blog-item .meta-image img {
+  margin: 0 auto;
+  vertical-align: top;
+  width: 50%;
+}
+.blog-item .meta-time {
+  color: #aaa;
+  float: right;
+  font-size: 12px;
+  margin: 0 -15px 0 0;
+}
+
+/*
+ * Gallery template
+ */
+.gallery {
+  margin: 0;
+}
+.gallery .grid {
+  -webkit-column-count: 1;
+  -moz-column-count: 1;
+  column-count: 1;
+  column-gap: 20px;
+}
+.gallery .grid-item {
+  display: inline-block;
+  margin-bottom: 18px;
+  text-align: center;
+  width: 100%;
+}
+.gallery .grid-item img {
+  cursor: pointer;
+  vertical-align: top;
+  width: 100%;
+}
+
+/*
+ * More styles
+ */
+#menu .pure-menu-heading {
+  background: transparent;
+}
+
+#logo {
+  background: #181818 !important;
+  display: block;
+  padding: 1.8em 1em !important;
+}
+#logo img {
+  width: 90%;
+}
+
+#footer {
+  bottom: 0;
+  font-size: 0.8rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
+#footer a {
+  color: #008;
+  text-decoration: none;
+}
+
+/* -- Responsive Styles (Media Queries) ------------------------------------- */
+
+/*
+Hides the menu at `48em`, but modify this based on your app's needs.
+*/
+@media (min-width: 48em) {
+
+  #layout {
+    padding-left: 250px; /* left col width "#menu" */
+    left: 0;
+  }
+  #menu {
+    left: 250px;
+  }
+
+  .menu-link {
+    position: fixed;
+    left: 250px;
+    display: none;
+  }
+
+  #layout.active .menu-link {
+    left: 250px;
+  }
+}
+
+@media (max-width: 48em) {
+  #layout.active {
+    position: relative;
+    left: 250px;
+  }
+}
+
+@media( min-width: 480px ) {
+  main {
+    margin: 0 12px;
+  }
+  .gallery .grid {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+  }
+}
+
+@media( min-width: 768px ) {
+  main {
+    margin: 0 25px;
+  }
+}
+
+@media( min-width: 992px ) {
+  main {
+    margin: 0 50px;
+  }
+  .gallery .grid {
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+  }
+}
+
+@media( min-width: 1200px ) {
+}
+
+@media( min-width: 1600px ) {
+  .gallery .grid {
+    -webkit-column-count: 4;
+    -moz-column-count: 4;
+    column-count: 4;
+  }
+}
+
+.gallery main {
+  margin: 0 15px;
+}

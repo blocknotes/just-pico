@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if meta.title %}{{ meta.title }} | {% endif %}{{ site_title }}</title>
+  {% if meta.description %}
+    <meta name="description" content="{{ meta.description|striptags }}">
+  {% endif %}{% if meta.robots %}
+    <meta name="robots" content="{{ meta.robots }}">
+  {% endif %}
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700" type="text/css" />
+  <link rel="stylesheet" href="{{ theme_url }}/css/pure-min.css" type="text/css" />
+  {% if meta.template == 'blog' %}
+  <!-- <link rel="stylesheet" href="{{ theme_url }}/css/style-blog.css" type="text/css" /> -->
+  {% endif %}
+  <link rel="stylesheet" href="{{ theme_url }}/css/style.css" type="text/css" />
+</head>
+<body class="{{ meta.template ? meta.template : 'page' }}">
+  <div id="layout">
+    <!-- Menu toggle -->
+    <a href="#menu" id="menuLink" class="menu-link">
+      <!-- Hamburger icon -->
+      <span></span>
+    </a>
+    <header id="menu">
+      <div class="pure-menu">
+        <a id="logo" class="pure-menu-heading" href="{{ 'index'|link }}">
+          {% if config.site_logo %}
+            <img src="{{ base_url }}/assets/images/{{ config.site_logo }}" alt="{{ site_title }}"/>
+          {% else %}
+            {{ site_title }}
+          {% endif %}
+        </a>
+        <!-- <h4>{{ meta.subtitle }}</h4> -->
+        <ul class="pure-menu-list">
+          {% for page in pages if page.title %}
+            {% if not (page.id starts with "blog/") %}
+              <li class="pure-menu-item {% if page.id == current_page.id %}pure-menu-selected{% endif %}">
+                <a href="{{ page.url }}" class="pure-menu-link">{{ page.title }}</a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </header>

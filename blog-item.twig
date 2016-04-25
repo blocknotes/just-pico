@@ -1,0 +1,21 @@
+{{ include( 'header.twig' ) }}
+
+  <main>
+    <div class="header">
+        <h1>{{ meta.title }}</h1>
+        {% if meta.subtitle %}
+          <h2>{{ meta.subtitle }}</h2>
+        {% endif %}
+    </div>
+    {% if meta.image %}
+    <div class="meta-image">
+      <img src="{{ base_url }}/assets/images/{{ meta.image }}"/>
+    </div>
+    {% endif %}
+    <div class="content">
+      <span class="meta-time">{{ meta.time | date( 'j M Y' ) }}</span>
+      {{ content }}
+    </div>
+  </main>
+
+{{ include( 'footer.twig' ) }}
