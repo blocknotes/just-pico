@@ -1,6 +1,17 @@
+# PROJECT UNMAINTAINED
+
+> *This project is not maintained anymore*
+>
+> *If you like it or continue to use it fork it please.*
+
+---
+---
+
 # just-pico
 
 A simple Pico CMS theme made with PureCSS
+
+![Screenshot](screenshot.jpg)
 
 ## INSTALL
 
@@ -35,6 +46,6 @@ Images: gallery/img1.jpg, gallery/img2.jpg, gallery/img3.jpg
 It will look for images in pico path: 'assets/images/gallery/img1.jpg', etc.
 To add thumbnails create also a scaled copy of every image with an underscore before the extension: 'assets/images/gallery/img1_.jpg'
 
-## PREVIEW
+* * *
 
-![Screenshot](https://github.com/blocknotes/just-pico/blob/master/screenshot.jpg)
+My website: <https://blocknot.es/>
